@@ -35,6 +35,7 @@ class Ffmpeg < Formula
   option "with-libvmaf", "Enable libvmaf scoring library"
   option "with-libxml2", "Enable libxml2 library"
   option "with-libzvbi", "Enable decoding of DVB teletext pages and DVB teletext subtitles"
+  option "with-svt-av1", "Enable SVT-AV1 encoding via "
 
   depends_on "nasm" => :build
   depends_on "pkg-config" => :build
@@ -87,6 +88,7 @@ class Ffmpeg < Formula
   depends_on "xvid" => :optional
   depends_on "zeromq" => :optional
   depends_on "zimg" => :optional
+  depends_on "unjello/svt-av1/svt-av1" => :optional
 
   uses_from_macos "bzip2"
   uses_from_macos "zlib"
@@ -142,6 +144,7 @@ class Ffmpeg < Formula
     args << "--enable-libopenjpeg" if build.with? "openjpeg"
     args << "--enable-libopenmpt" if build.with? "libopenmpt"
     args << "--enable-librav1e" if build.with? "rav1e"
+    args << "--enable-libsvtav1" if build.with? "svt-av1"
     args << "--enable-librist" if build.with? "librist"
     args << "--enable-librsvg" if build.with? "librsvg"
     args << "--enable-librtmp" if build.with? "rtmpdump"
